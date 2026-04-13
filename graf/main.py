@@ -1,15 +1,14 @@
-from collections import deque
-
-
 def bfs_from_vertex(matrix: list[list[int]], start: int) -> list[int]:
     n = len(matrix)
     dist = [-1] * n
 
-    queue: deque[int] = deque([start])
+    queue: list[int] = [start]
+    head = 0
     dist[start] = 0
 
-    while queue:
-        current = queue.popleft()
+    while head < len(queue):
+        current = queue[head]
+        head += 1
 
         for next_vertex in range(n):
             if matrix[current][next_vertex] == 1 and dist[next_vertex] == -1:
